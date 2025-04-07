@@ -96,7 +96,7 @@ async function populateProducts() {
   await fetchProducts();
   let output = `<div class="row">`;
   for (let i in products){
-    if (i % 4 == 0)
+    if (i % 4 === 0)
       output += `</div><div class="row">`;
 
     output += `
