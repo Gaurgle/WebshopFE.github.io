@@ -11,73 +11,72 @@ const validations = [regexName, regexPhone, regexEmail, regexStreet, regexZipCod
 
 //Adds eventlistener to form to perform validation
 document.addEventListener("DOMContentLoaded", () => {
-  let form = document.getElementById("myForm");
-  if (form != null) {
-    form.addEventListener("submit", validateFields);
-  }
+    let form = document.getElementById("myForm");
+    if (form != null) {
+        form.addEventListener("submit", validateFields);
+    }
 });
 
 //Validation function for the form
 function validateFields(e) {
-  //Prevents the form from submitting and refreshing
-  e.preventDefault();
-  
-  //All input values in the form to preform validation on
-  let fullName = document.getElementById("name");
-  let phone = document.getElementById("phone");
-  let email = document.getElementById("email");
-  let street = document.getElementById("street");
-  let zipCode = document.getElementById("zipCode");
-  let city = document.getElementById("city");
-  
-  //Adds the input values to an array to validate everything in a for loop
-  const values = [fullName, phone, email, street, zipCode, city];
+    //Prevents the form from submitting and refreshing
+    e.preventDefault();
 
-  //Validating each field against it's corresponding expression
-  for (i in values) {
+    //All input values in the form to preform validation on
+    let fullName = document.getElementById("name");
+    let phone = document.getElementById("phone");
+    let email = document.getElementById("email");
+    let street = document.getElementById("street");
+    let zipCode = document.getElementById("zipCode");
+    let city = document.getElementById("city");
 
-    //If the expression is true add "is-valid" to the values class to display a green check-icon"
-    if (validations[i].test(values[i].value)) {
-      
-      //Removes "is-invalid" if it was invalid in the previous attempt
-      if (values[i].classList.contains("is-invalid")) {
-        values[i].classList.remove("is-invalid");
-      }
+    //Adds the input values to an array to validate everything in a for loop
+    const values = [fullName, phone, email, street, zipCode, city];
 
-      //Adds valid to the input
-      values[i].classList.add("is-valid");
+    //Validating each field against it's corresponding expression
+    for (i in values) {
 
-    } else {
-      //Removes "is-valid" if it was valid in the previous attempt
-      if (values[i].classList.contains("is-valid")) {
-        values[i].classList.remove("is-valid");
-      }
+        //If the expression is true add "is-valid" to the values class to display a green check-icon"
+        if (validations[i].test(values[i].value)) {
 
-      //Adds invalid to the input
-      values[i].classList.add("is-invalid");
+            //Removes "is-invalid" if it was invalid in the previous attempt
+            if (values[i].classList.contains("is-invalid")) {
+                values[i].classList.remove("is-invalid");
+            }
+
+            //Adds valid to the input
+            values[i].classList.add("is-valid");
+
+        } else {
+            //Removes "is-valid" if it was valid in the previous attempt
+            if (values[i].classList.contains("is-valid")) {
+                values[i].classList.remove("is-valid");
+            }
+
+            //Adds invalid to the input
+            values[i].classList.add("is-invalid");
+        }
+
+        let validInputs = 0;
+
+        values.forEach(value => value.classList.contains("is-valid") ? validInputs++ : validInputs -= 1);
+
+        if (validInputs === values.length) {
+            let success = new bootstrap.Modal(document.getElementById("paymentAccepted"));
+            success.show();
+        }
     }
-
-    let validInputs = 0;
-
-    values.forEach(value => value.classList.contains("is-valid") ? validInputs ++ : validInputs -= 1 );
-
-    if (validInputs === values.length) {
-      let success = new bootstrap.Modal(document.getElementById("paymentAccepted"));
-      success.show();
-    }
-  }
 }
+
 //End of validation script
 
 //Close modal and go back to homepage
 function closeModal() {
-  
-  let success = new bootstrap.Modal(document.getElementById("paymentAccepted"));
-  success.hide();
-  setTimeout(
-    () => window.location.href = "index.html",
-    400
-  )
+
+    let success = new bootstrap.Modal(document.getElementById("paymentAccepted"));
+    success.hide();
+    setTimeout(
+        () => window.location.href = "index.html",
+        400
+    )
 }
-
-

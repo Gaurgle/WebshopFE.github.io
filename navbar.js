@@ -1,6 +1,6 @@
 async function populateNavbar() {
     let output = `
-    <nav class="navbar sticky-top navbar-expand-sm navbar-light bg-white shadow-sm">
+    <nav class="navbar sticky-top navbar-expand-sm shadow-sm opacity-1">
     <div class="container my-3">
         <a href="#" class="navbar-brand mb-0 h1">
             Battle Shop
@@ -23,6 +23,9 @@ async function populateNavbar() {
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="window.location.href='cart.html'">Cart</a>
                 </li>
+                <!-- Inside your navbar or header -->
+<button id="darkModeToggle" class="btn btn-outline-secondary">Dark</button>
+
             </ul>
         </div>
     </div>
