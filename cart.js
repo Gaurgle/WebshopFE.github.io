@@ -6,6 +6,8 @@ function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+
+
 function addToCart(product) {
     const cart = getCart();
 
