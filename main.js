@@ -84,6 +84,7 @@ function closeModal() {
 let products = [];
 
 // TODO här måste vi lösa grejer så det körs so det ska. Just nu får jag inte fram några produkter på sidan.
+
 populateProducts();
 
 // async function fetchProducts() {
@@ -129,10 +130,6 @@ populateProducts();
 //   document.getElementById('prod-container').innerHTML = output;
 // }
 
-function getFirstFiveWords(text) {
-  const words = text.split(" ");
-  return words.length > 5 ? words.slice(0, 6).join(" ") + "..." : text;
-}
 
 function scrollToBottom(){
   const scrollHeight = document.body.scrollHeight;
