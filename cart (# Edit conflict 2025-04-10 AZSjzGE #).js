@@ -65,12 +65,9 @@ function renderCart() {
             <img src="${item.img}" alt="${item.title}" width="50">
             <span>${item.title}</span>
             <span>$item.quantity} x €${item.price.toFixed(2)} =  €${itemTotal.toFixed(2)}</span>
-            <button onclick="ontimeupdate(${item.id}, 1)">+</button>
-            <button onclick="ontimeupdate(${item.id}, -1)">-</button>
-            </div>
-            `;
-    });
-    output += `div class="cart-total"><Strong>Total: €${total.toFixed(2)}</Strong></div>`;
-    document.getElementById('cart-container').innerHTML = output;
+            <button onclick="ontimeupdate(${item.id}, 1)">+
+            
+        `
+    })
 
 }

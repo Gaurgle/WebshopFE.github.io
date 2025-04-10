@@ -70,7 +70,6 @@ function renderCart() {
             </div>
             `;
     });
-    output += `div class="cart-total"><Strong>Total: €${total.toFixed(2)}</Strong></div>`;
-    document.getElementById('cart-container').innerHTML = output;
+    output += `div class="`
 
 }

@@ -71,6 +71,6 @@ function renderCart() {
             `;
     });
     output += `div class="cart-total"><Strong>Total: €${total.toFixed(2)}</Strong></div>`;
-    document.getElementById('cart-container').innerHTML = output;
+    document.getElementById()
 
 }
