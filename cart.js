@@ -7,7 +7,6 @@ function saveCart(cart) {
 }
 
 
-
 function addToCart(product) {
     const cart = getCart();
 
@@ -57,20 +56,32 @@ function renderCart() {
     let output = '';
     let total = 0;
 
-    forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        output = `
-        <div class="cart-item">
-            <img src="${item.img}" alt="${item.title}" width="50">
-            <span>${item.title}</span>
-            <span>$item.quantity} x €${item.price.toFixed(2)} =  €${itemTotal.toFixed(2)}</span>
-            <button onclick="ontimeupdate(${item.id}, 1)">+</button>
-            <button onclick="ontimeupdate(${item.id}, -1)">-</button>
-            </div>
+    if (cart.length === 0) {
+        itemsHTML = `<p>No items in cart</p>`;
+    } else {
+        forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            itemsHTML += `
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <strong>${item.title}</strong><br />
+            <small>${item.quantity} x €${item.price.toFixed(2)} = €${itemTotal.toFixed(2)}</small>
+          </div>
+          <div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(${item.id}, 1)">+</button>
+            <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(${item.id}, -1)">-</button>
+            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">Remove</button>
+          </div>
+        </div>
             `;
-    });
-    output += `div class="cart-total"><Strong>Total: €${total.toFixed(2)}</Strong></div>`;
-    document.getElementById('cart-container').innerHTML = output;
-
+        });
+    }
+    // output += `div class="cart-total"><Strong>Total: €${total.toFixed(2)}</Strong></div>`;
+    document.getElementById('cart-items-content').innerHTML = itemsHTML;
+    document.getElementById('cart-totals-content').innerHTML = `<p>Total: €${total.toFixed(2)}</p>`;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderCart();
+});

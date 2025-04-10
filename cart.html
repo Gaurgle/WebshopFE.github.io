@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle Shop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"
+          type="text/css">
     <style>
         .scale-on-hover {
             transition: transform 0.3s ease-in-out;
@@ -94,23 +96,101 @@
         .text-orange {
             color: #EB5E28;
         }
+
+        .cart-box {
+            border: 1px solid #131313;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        #cart-items {
+            color: #0dcaf0;
+            border-radius: 18px;
+            /*width: 1rem;*/
+            /*height: 2rem;*/
+
+        }
+
+        #cart-math {
+            color: #f31356;
+            border-radius: 18px;
+        }
+
     </style>
 </head>
+<body>
+<div class="container my-5">
+    <div class="row">
+        <!-- Cart item section -->
+        <div class="col-md-6">
+            <div id="cart-items" class="cart-box">
+                <div class="row">
+                    <div class="col-sm-7 col-md-8" style="border: 1px solid black;">
+                        <h1 class="h1">Cart-items</h1>
+                        <div id="cart-items-content">
 
-<div id="cart-container"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-4" style="border: 1px solid black;">
+                        <p class="mt-4">actual items</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 1px solid black; width: 50%; margin-left: auto">
+                <p class="mt-4">Items in cart.</p>
+            </div>
+        </div>
 
-<button class="btn btn-danger" onclick="clearCart()">Empty Cart</button>
-<button class="btn btn-success" onclick="window.location.href='form.html'">Buy</button>
+        <!-- Cart math section -->
+        <div class="col-md-6">
+            <div id="cart-math" class="cart-box">
+                <div class="row">
+                    <div class="col-sm-7 col-md-8" style="border: 1px solid black;">
+                        <h1 class="h1">Cart-math</h1>
+                    </div>
+                    <div class="col-sm-5 col-md-4" style="border: 1px solid black;">
+                        <p class="mt-4">The math</p>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 1px solid black; width: 50%; margin-left: auto">
+                <div id="cart-totals-content">
 
-<script src="main.js"></script>
-<script src="bootstrap.js"></script>
-<script src="navbar.js"></script>
+                </div>
+            </div>
+        </div>
 
-<script src="cartUI.js"></script>
-<script src="cart.js"></script>
-<script src="products.js"></script>
-<script src="checkout.js"></script>
-<script src="about.js"></script>
 
+        <!-- buttons -->
+        <div class="container" id="cart-container">
+
+            <button class="btn btn-custom px-4 py-2 rounded-5 my-4" onclick="clearCart()">Empty Cart</button>
+            <button class="btn btn-custom px-4 py-2 rounded-5 my-4" onclick="window.location.href='form.html'">Go to
+                payment
+            </button>
+        </div>
+
+
+        <!-- scripts -->
+        <script src="main.js"></script>
+        <script src="bootstrap.js"></script>
+        <script src="navbar.js"></script>
+
+        <script src="cartUI.js"></script>
+        <script src="cart.js"></script>
+        <script src="products.js"></script>
+        <script src="checkout.js"></script>
+        <script src="about.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+4dJo6aY5nI2zF+0YkFZt8M2y6sm/"
+                crossorigin="anonymous"></script>
+    </div>
+</div>
 </body>
 </html>

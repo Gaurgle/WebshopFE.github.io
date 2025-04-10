@@ -19,7 +19,10 @@ function populatePopup() {
                   <h4 class="modal-title" id="modal-title">Modal title</h4>
                   <h5 id="modal-price" class="fw-bold my-3 text-orange">&nbsp;</h5>
                   <p class="card-text" id="modal-desc"></p>
-                  <a href="#" id="modal-buy" class="btn btn-custom mt-3 px-4 py-2 rounded-5">Add to cart</a>
+                  
+                  <!-- denna behöver existera för att då upp modal -->
+                  <a href="#" id="modal-buy" class="btn btn-custom mt-3 px-4 py-2 rounded-5">Buy</a>
+                  
                 </div>
               </div>
             </div>
@@ -86,12 +89,14 @@ function populateProductPopUp(index) {
 
     const buyBtn = document.getElementById('modal-buy');
     if (buyBtn) {
+        console.log("item bought");
         buyBtn.href = `form.html?title=${encodeURIComponent(products[index].title)}&price=${products[index].price.toFixed(2)}&image=${encodeURIComponent(products[index].image)}`;
         // TODO ändra från encode
     }
 }
 
 function addToCart(product) {
+    localStorage
     console.log("add to cart: ", product);
     // TODO: implement cart functionality
 }
