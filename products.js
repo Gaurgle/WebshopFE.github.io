@@ -1,5 +1,8 @@
+// js/products.js
+
 let products = [];
 
+// Insert the modal markup into the DOM (once)
 function populatePopup() {
     const modalMarkup = `
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModal" aria-hidden="true">
@@ -19,10 +22,7 @@ function populatePopup() {
                   <h4 class="modal-title" id="modal-title">Modal title</h4>
                   <h5 id="modal-price" class="fw-bold my-3 text-orange">&nbsp;</h5>
                   <p class="card-text" id="modal-desc"></p>
-                  
-                  <!-- denna behöver existera för att då upp modal -->
-                  <a href="#" id="modal-buy" class="btn btn-custom mt-3 px-4 py-2 rounded-5">Buy</a>
-                  
+                  <button class="btn btn-custom mt-3 px-4 py-2 rounded-5" onclick="addToCart(currentModalProduct)">Add to cart</button>
                 </div>
               </div>
             </div>
@@ -33,6 +33,10 @@ function populatePopup() {
     document.body.insertAdjacentHTML('beforeend', modalMarkup);
 }
 
+// In this example, we'll use a global variable to store the current product to be shown in the modal.
+let currentModalProduct = null;
+
+// Fetch products from API
 async function fetchProducts() {
     try {
         const response = await fetch('https://fakestoreapi.com/products');
@@ -43,6 +47,7 @@ async function fetchProducts() {
     }
 }
 
+// Populate product cards on the index page
 async function populateProducts() {
     await fetchProducts();
     let output = `<div class="row">`;
@@ -76,37 +81,23 @@ async function populateProducts() {
     document.getElementById('prod-container').innerHTML = output;
 }
 
+// Helper to return first five words
 function getFirstFiveWords(text) {
     const words = text.split(" ");
     return words.length > 5 ? words.slice(0, 6).join(" ") + "..." : text;
 }
 
+// Update the modal content based on the clicked product index.
 function populateProductPopUp(index) {
+    currentModalProduct = products[index]; // Set global variable for modal action button.
     document.getElementById('modal-title').textContent = products[index].title;
     document.getElementById('modal-price').textContent = `€${products[index].price.toFixed(2)}`;
     document.getElementById('modal-desc').textContent = products[index].description;
     document.getElementById('modal-img').src = products[index].image;
-
-    const buyBtn = document.getElementById('modal-buy');
-    if (buyBtn) {
-        console.log("item bought");
-        buyBtn.href = `form.html?title=${encodeURIComponent(products[index].title)}&price=${products[index].price.toFixed(2)}&image=${encodeURIComponent(products[index].image)}`;
-        // TODO ändra från encode
-    }
 }
 
-function addToCart(product) {
-    localStorage
-    console.log("add to cart: ", product);
-    // TODO: implement cart functionality
-}
-
-function scrollToBottom(){
-    const scrollHeight = document.body.scrollHeight;
-    window.scrollTo(0, scrollHeight);
-}
-
+// On DOMContentLoaded, insert the modal markup and populate products.
 document.addEventListener('DOMContentLoaded', function() {
-    populatePopup();    // Insert modal markup into DOM.
-    populateProducts(); // Create product cards.
+    populatePopup();    // Insert modal markup.
+    populateProducts(); // Render product cards.
 });
