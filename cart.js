@@ -71,8 +71,12 @@ function renderCart() {
           </div>
           <div class="flex-shrink-0 mb-4">
             <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, 1)">+</button>
+            
+            <!-- antal här emellan -->
+            <div class="btn btn-outline-secondary btn-sm me-1">${item.quantity}</div>
+            
             <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, -1)">-</button>
-            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">Remove</button>
+            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">Remove</button> <!-- lägg till delete png -->
           </div>
         </div>
       `;
