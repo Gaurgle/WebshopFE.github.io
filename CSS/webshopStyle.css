@@ -1,0 +1,168 @@
+    .scale-on-hover {
+    transition: transform 0.3s ease-in-out;
+}
+
+.scale-on-hover:hover {
+    transform: scale(1.05);
+}
+
+.card-image-container {
+    height: 13rem;
+    cursor: pointer;
+}
+
+.card-image-custom {
+    max-height: 13rem;
+}
+
+.container-custom {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.text-content h1 {
+    font-size: 5rem;
+}
+
+.text-content p {
+    font-size: 1.1rem;
+    max-width: 75%;
+}
+
+.btn-custom {
+    background-color: #EB5E28;
+    border: none;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #e64a19;
+}
+
+.pill-bg-custom {
+    background-color: #e64a19;
+}
+
+.svg-custom-orange {
+    color: #e64a19;
+}
+
+.image-container {
+    flex: 0 1 auto;
+    cursor: pointer;
+}
+
+.image-container img {
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.product-title {
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.25;
+    height: 60px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/*cart +/- buttons and counter*/
+.btn-plus {
+    border-top-left-radius: 0.40rem;
+    border-bottom-left-radius: 0.40rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+.btn-counter {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+}
+.btn-minus {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.40rem;
+    border-bottom-right-radius: 0.40rem;
+}
+
+@media (max-width: 767px) {
+    .container-custom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-content h1 {
+        font-size: 3rem;
+    }
+
+    .text-content p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .image-container img {
+        width: 80%;
+        margin-top: 20px;
+    }
+}
+
+.text-orange {
+    color: #EB5E28;
+}
+
+/*<!-- Dark mode -->*/
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+
+    --nav-bg: #f8f9fa;
+    --nav-text: #000000;
+
+    --footer-bg: #f8f9fa;
+    --footer-text: #000000;
+
+    --btn-bg: #EB5E28;
+    --btn-hover-bg: #e64a19;
+}
+
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+
+    --nav-bg: #333333;
+    --nav-text: #ffffff;
+
+    --footer-bg: #333333;
+    --footer-text: #ffffff;
+
+    --btn-bg: #444444;
+    --btn-hover-bg: #666666;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navbar styles (adjust the selectors to match your markup) */
+.navbar {
+    background-color: var(--nav-bg) !important;
+    color: var(--nav-text) !important;
+    transition: background-color 0.3s, color 0.3s;
+    opacity: 1;
+}
+
+/* Footer styles */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+}
