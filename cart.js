@@ -66,19 +66,21 @@ function renderCart() {
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
             itemsHTML += `
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <div>
-                <strong>${item.title}</strong><br>
-                <small>${item.quantity} x €${item.price.toFixed(2)} = €${itemTotal.toFixed(2)}</small>
-              </div>
-              <div>
-                <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(${item.id}, 1)">+</button>
-                <button class="btn btn-outline-secondary btn-sm" onclick="updateQuantity(${item.id}, -1)">-</button>
-                <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">Remove</button>
-              </div>
-            </div>
-          `;
-            });
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <!-- Text container: fixed max-width with ellipsis if necessary -->
+          <div class="flex-grow-1" style="max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            <strong>${getFirstFiveWords(item.title)}</strong><br>
+            <small>${item.quantity} x €${item.price.toFixed(2)} = €${itemTotal.toFixed(2)}</small>
+          </div>
+          <!-- Button container: fixed width so buttons always stay aligned -->
+          <div class="flex-shrink-0">
+            <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, 1)">+</button>
+            <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, -1)">-</button>
+            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">Remove</button>
+          </div>
+        </div>
+      `;
+        });
     }
     const itemsEl = document.getElementById('cart-items-content');
     if (itemsEl) {

@@ -67,7 +67,6 @@ function validateFields(e) {
         }
     }
 }
-
 //End of validation script
 
 //Close modal and go back to homepage

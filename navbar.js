@@ -3,7 +3,7 @@ async function populateNavbar() {
     <nav class="navbar sticky-top navbar-expand-sm shadow-sm opacity-1">
     <div class="container my-3">
         <a href="#" class="navbar-brand mb-0 h1">
-            Battle Shop
+            Andreas Webshop
         </a>
         <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@ async function populateNavbar() {
                     <a href="index.html" class="nav-link" onclick="scrollToBottom()">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="window.location.href='cart.html'">Cart</a>
+                    <a href="#" class="nav-link" onclick="window.location.href='form.html'">Cart</a>
                 </li>
                 <li>
                     <button id="darkModeToggle" class="btn btn-toolbar px-2">Dark</button>

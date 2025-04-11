@@ -36,6 +36,7 @@
     .text-orange {
         color: #EB5E28;
     }
+
     /*<!-- Dark mode -->*/
     :root {
         /* Global color variables */
@@ -43,8 +44,8 @@
         --text-color: #000000;
 
         /* Navbar specific */
-        --nav-bg: #f8f9fa;          /* Light background */
-        --nav-text: #000000;        /* Dark text */
+        --nav-bg: #f8f9fa; /* Light background */
+        --nav-text: #000000; /* Dark text */
 
 
         /* Footer specific */
@@ -60,8 +61,8 @@
         --bg-color: #121212;
         --text-color: #e0e0e0;
 
-        --nav-bg: #333333;          /* Dark background for navbar */
-        --nav-text: #ffffff;        /* White text for navbar */
+        --nav-bg: #333333; /* Dark background for navbar */
+        --nav-text: #ffffff; /* White text for navbar */
 
         --footer-bg: #333333;
         --footer-text: #ffffff;
@@ -98,20 +99,37 @@
         <div class="card p-3 border-0 rounded-5 shadow-sm">
             <div class="row g-0 align-items-center">
                 <div class="col-md-4">
-                    <img id="product-img" src="img/nav/bioglow.png" class="img-fluid rounded-4" alt="Product Image"/>
+                    <!-- carousel -->
+                    <div id="cartCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner" id="carousel-inner">
+                            <!-- Carousel items will be injected here by JavaScript -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#cartCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#cartCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <!-- end carousel -->
+
                 </div>
 
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="text-muted mb-1" id="product-name">Product Name Unknown Product</h5>
-
-                        <h3 class="fw-bold" id="product-price">Price SEK 0.00</h3>
-                        <div id="cart-items-content" class="cart-box" style="display: none"></div>
-                        <div id="cart-totals-content" class="cart-box"></div>
+                        <div id="cart-totals-content" class="cart-box fw-bold fs-3"></div>
+                        <div id="cart-items-content" class="cart-box"></div>
                     </div>
                 </div>
+
             </div>
+
         </div>
+        <button class="btn btn-custom px-4 py-2 rounded-5 my-4 text-white shadow-lg" onclick="clearCart()">Empty Cart
+        </button>
+
     </div>
 </div>
 <!--End of card layout-->
@@ -125,7 +143,7 @@
                 <input type="text" class="form-control text-bg-custom shadow-sm rounded-pill border-0" id="name"
                        placeholder="Andreas Roos" required/>
                 <div class="invalid-feedback">
-                    Please enter your full name. ie. Andreas Roos
+                    Please enter your full name. i.e. Andreas Roos
                 </div>
             </div>
             <div class="mb-3">
@@ -270,6 +288,8 @@
 <script src="navbar.js"></script>
 <script src="cart.js"></script>
 <script src="darkmode.js"></script>
+<script src="products.js"></script>
+
 </body>
 
 </html>

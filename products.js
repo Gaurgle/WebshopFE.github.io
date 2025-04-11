@@ -97,7 +97,61 @@ function populateProductPopUp(index) {
 }
 
 // On DOMContentLoaded, insert the modal markup and populate products.
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     populatePopup();    // Insert modal markup.
     populateProducts(); // Render product cards.
+});
+
+function updateCartImage() {
+    const cart = getCart(); // Assume getCart() returns your cart array from localStorage
+    if (cart.length > 0) {
+        const firstProduct = cart[0];
+        const productImg = document.getElementById('product-img');
+        if (productImg && firstProduct.image) {
+            productImg.src = firstProduct.image;
+            productImg.style.maxWidth = "70%";
+            productImg.style.maxHeight = "70%";
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderCart();         // Your function to render cart items and totals.
+    updateCartImage();    // Update the product image from the first cart item.
+});
+
+function populateCartCarousel() {
+    const cart = getCart(); // Assumes getCart() returns your cart array from localStorage
+    const carouselInner = document.getElementById('carousel-inner');
+
+    // If the carousel container is not found, exit.
+    if (!carouselInner) return;
+
+    // If there are no products in the cart, show a default image or message
+    if (cart.length === 0) {
+        carouselInner.innerHTML = `
+          <div class="carousel-item active">
+            <img src="default.jpg" class="d-block w-100" alt="No items in cart">
+          </div>
+        `;
+        return;
+    }
+
+    let carouselItemsHTML = '';
+
+    cart.forEach((item, index) => {
+        // Each carousel item gets the product image,
+        // and the first item is marked active so the carousel works.
+        carouselItemsHTML += `
+          <div class="carousel-item ${index === 0 ? 'active' : ''}">
+            <img src="${item.image}" class="d-block w-100" alt="${item.title}" style="max-height: 70%; max-width: 70% object-fit: contain;">
+            
+          </div>
+        `;
+    });
+
+    carouselInner.innerHTML = carouselItemsHTML;
+}
+document.addEventListener('DOMContentLoaded', function() {
+    populateCartCarousel();
 });
