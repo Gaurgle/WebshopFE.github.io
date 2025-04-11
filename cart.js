@@ -45,12 +45,14 @@ function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== productId);
     saveCart(cart);
     renderCart();
+    updateCartImage();
 }
 
 // Clear the entire cart.
 function clearCart() {
     localStorage.removeItem('cart');
     renderCart();
+    updateCartImage()
 }
 
 // Render cart contents to the page (used on cart.html)
@@ -68,12 +70,12 @@ function renderCart() {
             itemsHTML += `
         <div class="d-flex justify-content-between align-items-center mb-3">
           <!-- Text container: fixed max-width with ellipsis if necessary -->
-          <div class="flex-grow-1" style="max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+          <div class="flex-grow-1 me-3" style="max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
             <strong>${getFirstFiveWords(item.title)}</strong><br>
             <small>${item.quantity} x €${item.price.toFixed(2)} = €${itemTotal.toFixed(2)}</small>
           </div>
           <!-- Button container: fixed width so buttons always stay aligned -->
-          <div class="flex-shrink-0">
+          <div class="flex-shrink-0 mb-4">
             <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, 1)">+</button>
             <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, -1)">-</button>
             <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">Remove</button>

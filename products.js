@@ -107,10 +107,18 @@ function updateCartImage() {
     if (cart.length > 0) {
         const firstProduct = cart[0];
         const productImg = document.getElementById('product-img');
-        if (productImg && firstProduct.image) {
-            productImg.src = firstProduct.image;
+
+
+        if (cart.length > 0 && productImg) {
+            // If there is at least one product, display its image
+            productImg.src = cart[0].image;
+            productImg.style.display = "block";
             productImg.style.maxWidth = "70%";
             productImg.style.maxHeight = "70%";
+        } else if (productImg) {
+            // If the cart is empty, hide the image (or set a default placeholder)
+            productImg.src = ""; // Or use a placeholder image, e.g., "default.png"
+            productImg.style.display = "none";
         }
     }
 }
