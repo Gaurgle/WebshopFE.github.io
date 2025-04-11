@@ -23,8 +23,10 @@ async function populateNavbar() {
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="window.location.href='cart.html'">Cart</a>
                 </li>
+                <li>
+                    <button id="darkModeToggle" class="btn btn-toolbar px-2">Dark</button>
+                </li>
                 <!-- Inside your navbar or header -->
-<button id="darkModeToggle" class="btn btn-outline-secondary">Dark</button>
 
             </ul>
         </div>
