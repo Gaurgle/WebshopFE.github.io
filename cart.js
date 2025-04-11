@@ -15,10 +15,10 @@ function addToCart(product) {
     if (existingProduct) {
         existingProduct.quantity++;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        cart.push({...product, quantity: 1});
     }
     saveCart(cart);
-    console.log("Added to cart:", product);
+    updateCartCounter();
 }
 
 // Update the quantity for a product.
@@ -34,6 +34,7 @@ function updateQuantity(productId, change) {
         }
     }
     renderCart();
+    updateCartCounter();
 }
 
 // Remove a product from the cart.
@@ -43,13 +44,15 @@ function removeFromCart(productId) {
     saveCart(cart);
     renderCart();
     updateCartImage();
+    updateCartCounter();
 }
 
 // Clear the entire cart.
 function clearCart() {
     localStorage.removeItem('cart');
     renderCart();
-    updateCartImage()
+    updateCartImage();
+    updateCartCounter();
 }
 
 function renderCart() {
@@ -65,19 +68,18 @@ function renderCart() {
             total += itemTotal;
             itemsHTML += `
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <div class="flex-grow-1 me-3" style="max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-            <strong>${getFirstFiveWords(item.title)}</strong><br>
-            <small>${item.quantity} x €${item.price.toFixed(2)} = €${itemTotal.toFixed(2)}</small>
-          </div>
-          <div class="flex-shrink-0 mb-4">
-            <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, 1)">+</button>
-            
-            <!-- antal här emellan -->
-            <div class="btn btn-outline-secondary btn-sm me-1">${item.quantity}</div>
-            
-            <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, -1)">-</button>
-            <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">Remove</button> <!-- lägg till delete png -->
-          </div>
+              <div class="flex-grow-1 me-3" style="max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                <strong>${getFirstFiveWords(item.title)}</strong><br>
+                <small>${item.quantity} x €${item.price.toFixed(2)} = €${itemTotal.toFixed(2)}</small>
+              </div>
+                  <div class="flex-shrink-0 mb-1 d-flex">
+                    <button class="btn btn-outline-secondary btn-sm btn-plus" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    <div class="btn btn-outline-secondary btn-sm btn-counter">${item.quantity}</div>
+                    <button class="btn btn-outline-secondary btn-sm btn-minus" onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <div class="btn btn-sm scale-on-hover cursor-pointer">
+                        <img src="Assets/img/nav/trash-can-solid.svg" alt="bin" height="20" draggable="false" onclick="removeFromCart(${item.id})">
+                    </div>
+              </div>
         </div>
       `;
         });
@@ -93,7 +95,24 @@ function renderCart() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if(document.getElementById('cart-items-content')) {
+    if (document.getElementById('cart-items-content')) {
         renderCart();
+        updateCartCounter();
     }
 });
+
+function updateCartCounter() {
+    const cart = getCart(); // Assumes getCart() returns an array of cart items
+    let totalItems = 0;
+
+    // Sum up the quantity of each item
+    cart.forEach(item => {
+        totalItems += item.quantity;
+    });
+
+    // Update the cart-counter element, if it exists
+    const counterEl = document.getElementById('cart-counter');
+    if (counterEl) {
+        counterEl.textContent = totalItems;
+    }
+}

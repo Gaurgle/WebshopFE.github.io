@@ -20,13 +20,15 @@ async function populateNavbar() {
                 <li class="nav-item">
                     <a href="index.html" class="nav-link" onclick="scrollToBottom()">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="window.location.href='form.html'">Cart</a>
-                </li>
                 <li>
                     <button id="darkModeToggle" class="btn btn-toolbar px-2">Dark</button>
                 </li>
-
+                <li class="nav-item">
+                    <div class="btn btn-sm cursor-pointer position-relative" onclick="window.location.href='form.html'">
+                        <img src="Assets/img/nav/cart-shopping-solid.svg" alt="bin" height="20" draggable="true" class="cursor-pointer" ">
+                        <span id="cart-counter" class="position-absolute translate-middle badge rounded-pill pill-bg-custom">0</span>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
