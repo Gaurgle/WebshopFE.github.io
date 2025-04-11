@@ -26,7 +26,6 @@ async function populateNavbar() {
                 <li>
                     <button id="darkModeToggle" class="btn btn-toolbar px-2">Dark</button>
                 </li>
-                <!-- Inside your navbar or header -->
 
             </ul>
         </div>

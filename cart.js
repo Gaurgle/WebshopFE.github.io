@@ -1,5 +1,3 @@
-// js/cart.js
-
 // Retrieve the cart from localStorage, or return an empty array if it doesn't exist.
 function getCart() {
     return JSON.parse(localStorage.getItem('cart')) || [];
@@ -20,11 +18,10 @@ function addToCart(product) {
         cart.push({ ...product, quantity: 1 });
     }
     saveCart(cart);
-    // Optionally, show a confirmation, update a cart icon, etc.
     console.log("Added to cart:", product);
 }
 
-// Update the quantity for a given product.
+// Update the quantity for a product.
 function updateQuantity(productId, change) {
     let cart = getCart();
     const product = cart.find(item => item.id === productId);
@@ -55,7 +52,6 @@ function clearCart() {
     updateCartImage()
 }
 
-// Render cart contents to the page (used on cart.html)
 function renderCart() {
     const cart = getCart();
     let itemsHTML = '';
@@ -69,12 +65,10 @@ function renderCart() {
             total += itemTotal;
             itemsHTML += `
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <!-- Text container: fixed max-width with ellipsis if necessary -->
           <div class="flex-grow-1 me-3" style="max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
             <strong>${getFirstFiveWords(item.title)}</strong><br>
             <small>${item.quantity} x €${item.price.toFixed(2)} = €${itemTotal.toFixed(2)}</small>
           </div>
-          <!-- Button container: fixed width so buttons always stay aligned -->
           <div class="flex-shrink-0 mb-4">
             <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, 1)">+</button>
             <button class="btn btn-outline-secondary btn-sm me-1" onclick="updateQuantity(${item.id}, -1)">-</button>
@@ -94,7 +88,6 @@ function renderCart() {
     }
 }
 
-// When the cart page loads, render the cart.
 document.addEventListener('DOMContentLoaded', () => {
     if(document.getElementById('cart-items-content')) {
         renderCart();

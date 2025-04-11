@@ -39,20 +39,15 @@
 
     /*<!-- Dark mode -->*/
     :root {
-        /* Global color variables */
         --bg-color: #ffffff;
         --text-color: #000000;
 
-        /* Navbar specific */
         --nav-bg: #f8f9fa; /* Light background */
         --nav-text: #000000; /* Dark text */
 
-
-        /* Footer specific */
         --footer-bg: #f8f9fa;
         --footer-text: #000000;
 
-        /* Button colors */
         --btn-bg: #EB5E28;
         --btn-hover-bg: #e64a19;
     }
@@ -61,8 +56,8 @@
         --bg-color: #121212;
         --text-color: #e0e0e0;
 
-        --nav-bg: #333333; /* Dark background for navbar */
-        --nav-text: #ffffff; /* White text for navbar */
+        --nav-bg: #333333;
+        --nav-text: #ffffff;
 
         --footer-bg: #333333;
         --footer-text: #ffffff;
@@ -77,7 +72,6 @@
         transition: background-color 0.3s, color 0.3s;
     }
 
-    /* Navbar styles (adjust the selectors to match your markup) */
     .navbar {
         background-color: var(--nav-bg) !important;
         color: var(--nav-text) !important;
@@ -85,7 +79,6 @@
         opacity: 1;
     }
 
-    /* Footer styles */
     footer {
         background-color: var(--footer-bg) !important;
         color: var(--footer-text);
@@ -102,7 +95,6 @@
                     <!-- carousel -->
                     <div id="cartCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner" id="carousel-inner">
-                            <!-- Carousel items will be injected here by JavaScript -->
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#cartCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -1,8 +1,5 @@
-// js/products.js
-
 let products = [];
 
-// Insert the modal markup into the DOM (once)
 function populatePopup() {
     const modalMarkup = `
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModal" aria-hidden="true">
@@ -33,7 +30,6 @@ function populatePopup() {
     document.body.insertAdjacentHTML('beforeend', modalMarkup);
 }
 
-// In this example, we'll use a global variable to store the current product to be shown in the modal.
 let currentModalProduct = null;
 
 // Fetch products from API
@@ -89,21 +85,21 @@ function getFirstFiveWords(text) {
 
 // Update the modal content based on the clicked product index.
 function populateProductPopUp(index) {
-    currentModalProduct = products[index]; // Set global variable for modal action button.
+    currentModalProduct = products[index];
     document.getElementById('modal-title').textContent = products[index].title;
     document.getElementById('modal-price').textContent = `€${products[index].price.toFixed(2)}`;
     document.getElementById('modal-desc').textContent = products[index].description;
     document.getElementById('modal-img').src = products[index].image;
 }
 
-// On DOMContentLoaded, insert the modal markup and populate products.
+// On DOMContentLoaded, insert the modal and populate products.
 document.addEventListener('DOMContentLoaded', function () {
     populatePopup();    // Insert modal markup.
     populateProducts(); // Render product cards.
 });
 
 function updateCartImage() {
-    const cart = getCart(); // Assume getCart() returns your cart array from localStorage
+    const cart = getCart();
     if (cart.length > 0) {
         const firstProduct = cart[0];
         const productImg = document.getElementById('product-img');
@@ -116,23 +112,21 @@ function updateCartImage() {
             productImg.style.maxWidth = "70%";
             productImg.style.maxHeight = "70%";
         } else if (productImg) {
-            // If the cart is empty, hide the image (or set a default placeholder)
-            productImg.src = ""; // Or use a placeholder image, e.g., "default.png"
+            productImg.src = "";
             productImg.style.display = "none";
         }
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderCart();         // Your function to render cart items and totals.
-    updateCartImage();    // Update the product image from the first cart item.
+    renderCart();
+    updateCartImage();
 });
 
 function populateCartCarousel() {
-    const cart = getCart(); // Assumes getCart() returns your cart array from localStorage
+    const cart = getCart();
     const carouselInner = document.getElementById('carousel-inner');
 
-    // If the carousel container is not found, exit.
     if (!carouselInner) return;
 
     // If there are no products in the cart, show a default image or message
