@@ -115,8 +115,16 @@
     max-height: 26rem;
     overflow-y: auto;
     padding: 0.5rem;
-    border: 2px solid #e1dddd;
+    border: 0px solid #e1dddd;
     border-radius: 12px;
+}
+
+hr.custom-line {
+    border: none;                     /* Remove default border */
+    height: 1px;                      /* Set the height to 1px */
+    background-color: #ccc;           /* Set your desired line color */
+    box-shadow: 0 2px 4px rgba(0, 10, 0, 0.4); /* Create a shadow below the line */
+    margin: 2px 0;                   /* Adjust spacing above and below the line as needed */
 }
 
 
