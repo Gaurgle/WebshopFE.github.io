@@ -111,6 +111,14 @@
     background: radial-gradient(ellipse at center, transparent 100%, rgb(255, 255, 255) 100%);
 }
 
+.cart-items-scroll {
+    max-height: 26rem;
+    overflow-y: auto;
+    padding: 0.5rem;
+    border: 2px solid #e1dddd;
+    border-radius: 12px;
+}
+
 
 @media (max-width: 767px) {
     .container-custom {
