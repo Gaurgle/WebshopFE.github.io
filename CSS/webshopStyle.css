@@ -1,4 +1,4 @@
-    .scale-on-hover {
+.scale-on-hover {
     transition: transform 0.3s ease-in-out;
 }
 
@@ -81,17 +81,36 @@
     border-bottom-right-radius: 0;
 
 }
+
 .btn-counter {
     border-radius: 0;
     border-left: none;
     border-right: none;
 }
+
 .btn-minus {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-top-right-radius: 0.40rem;
     border-bottom-right-radius: 0.40rem;
 }
+
+.carousel-item {
+    position: relative;
+    overflow: hidden; /* Ensures the pseudo-element doesn't spill out */
+}
+
+.carousel-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none; /* Allows clicks to go through to the image */
+    background: radial-gradient(ellipse at center, transparent 100%, rgb(255, 255, 255) 100%);
+}
+
 
 @media (max-width: 767px) {
     .container-custom {
