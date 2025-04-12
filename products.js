@@ -124,36 +124,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function populateCartCarousel() {
-    const cart = getCart();
+    const cart = getCart(); // getCart() returns your cart array
     const carouselInner = document.getElementById('carousel-inner');
-
     if (!carouselInner) return;
 
-    // If there are no products in the cart, show a default image or message
-    if (cart.length === 0) {
-        carouselInner.innerHTML = `
-          <div class="carousel-item active">
-            <img src="default.jpg" class="d-block w-100" alt="No items in cart">
-          </div>
-        `;
-        return;
-    }
-
     let carouselItemsHTML = '';
-
-    cart.forEach((item, index) => {
-        // Each carousel item gets the product image,
-        // and the first item is marked active so the carousel works.
-        carouselItemsHTML += `
-          <div class="carousel-item ${index === 0 ? 'active' : ''}">
-            <img src="${item.image}" class="d-block w-100" alt="${item.title}" style="max-height: 70%; max-width: 70% object-fit: contain;">
-            
-          </div>
+    if (cart.length === 0) {
+        // Use a default image if the cart is empty
+        carouselItemsHTML = `
+            <div class="carousel-item active">
+                <img src="default.jpg" class="d-block w-100" style="height:300px; object-fit: contain;" alt="No items in cart">
+            </div>
         `;
-    });
-
+    } else {
+        cart.forEach((item, index) => {
+            // The first item must have the "active" class
+            carouselItemsHTML += `
+                <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                    <img src="${item.image}" class="d-block w-100" style="height:300px; object-fit: contain;" alt="${item.title}">
+                </div>
+            `;
+        });
+    }
     carouselInner.innerHTML = carouselItemsHTML;
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     populateCartCarousel();
 });

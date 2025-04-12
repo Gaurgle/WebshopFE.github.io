@@ -72,9 +72,9 @@ function renderCart() {
                 <strong>${getFirstFiveWords(item.title)}</strong><br>
                 <small>${item.quantity} x €${item.price.toFixed(2)} = €${itemTotal.toFixed(2)}</small>
               </div>
-                  <div class="flex-shrink-0 mb-1 d-flex">
+                  <div class="flex-shrink-0 mb-1 d-flex translate-end">
                     <button class="btn btn-outline-secondary btn-sm btn-plus" onclick="updateQuantity(${item.id}, 1)">+</button>
-                    <div class="btn btn-outline-secondary btn-sm btn-counter">${item.quantity}</div>
+                    <div class="btn border-black btn-sm btn-counter">${item.quantity}</div>
                     <button class="btn btn-outline-secondary btn-sm btn-minus" onclick="updateQuantity(${item.id}, -1)">-</button>
                     <div class="btn btn-sm scale-on-hover cursor-pointer">
                         <img src="Assets/img/nav/trash-can-solid.svg" alt="bin" height="20" draggable="false" onclick="removeFromCart(${item.id})">
