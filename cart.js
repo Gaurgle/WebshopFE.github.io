@@ -16,8 +16,6 @@ function setCurrencyPreference(currency) {
     localStorage.setItem('currency', currency);
 }
 
-
-
 // Add a product to the cart, or update quantity if it already exists.
 function addToCart(product) {
     const cart = getCart();
@@ -175,3 +173,20 @@ async function showTotalInSEK() {
         document.getElementById('sek-total').textContent = `Total: ${sekTotal.toFixed(2)} kr`;
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('cart-items-content')) {
+        renderCart();
+        updateCartCounter();
+    }
+
+    const toggleBtn = document.getElementById('toggle-currency');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const current = getCurrencyPreference();
+            const newCurrency = current === 'EUR' ? 'SEK' : 'EUR';
+            setCurrencyPreference(newCurrency);
+            renderCart(); // re-render with new currency
+        });
+    }
+});
