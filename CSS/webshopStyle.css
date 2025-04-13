@@ -107,7 +107,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    pointer-events: none; /* Allows clicks to go through to the image */
+    pointer-events: none;
     background: radial-gradient(ellipse at center, transparent 100%, rgb(255, 255, 255) 100%);
 }
 
@@ -120,11 +120,11 @@
 }
 
 hr.custom-line {
-    border: none;                     /* Remove default border */
-    height: 1px;                      /* Set the height to 1px */
-    background-color: #ccc;           /* Set your desired line color */
-    box-shadow: 0 2px 4px rgba(0, 10, 0, 0.4); /* Create a shadow below the line */
-    margin: 2px 0;                   /* Adjust spacing above and below the line as needed */
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    box-shadow: 0 2px 4px rgba(0, 10, 0, 0.4);
+    margin: 2px 0;
 }
 
 
